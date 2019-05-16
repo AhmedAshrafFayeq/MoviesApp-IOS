@@ -7,22 +7,37 @@
 //
 
 import UIKit
-
+import CoreData
 private let reuseIdentifier = "favouritesCell"
 
 class FavouritesCollectionViewController: UICollectionViewController {
 
+    var favouritesPresenter : FavouritesPresenter = FavouritesPresenter()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    var movies = Array<NSManagedObject>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        favouritesPresenter.setDelegate(delegate: self)
 
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        favouritesPresenter.fetchFavouritesMovies(appDelegate: appDelegate)
+        
+    }
+
 
     /*
     // MARK: - Navigation
@@ -44,13 +59,16 @@ class FavouritesCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 2
+        return movies.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FavouritesCollectionViewCell
     
         // Configure the cell
+        let path : String = self.movies[indexPath.row].value(forKey: "posterPath") as! String
+        cell.img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + path), placeholderImage: UIImage(named: "cr1.jpg"))
+//        cell.textLabel?.text = movies[indexPath.row].value(forKey: "title") as! String
     
         return cell
     }

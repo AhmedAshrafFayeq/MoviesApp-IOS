@@ -10,5 +10,6 @@ import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var imgViewID: UIImageView!
+
+    @IBOutlet weak var img: UIImageView!
 }

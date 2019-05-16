@@ -9,12 +9,14 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SDWebImage
 
-private let reuseIdentifier = "homeCell"
+private let reuseIdentifier = "HomeCell"
 
 class HomeCollectionViewController: UICollectionViewController {
-
-    //var homePresenter : HomePresenter = HomePresenter()
+    var moviesList : Array<Movie> = []
+    var secondVC : DetailsViewController?
+    var homePresenter : HomePresenter = HomePresenter()
     
     
     override func viewDidLoad() {
@@ -22,23 +24,13 @@ class HomeCollectionViewController: UICollectionViewController {
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
         // Register cell classes
+        // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.homePresenter.setDelegate(delegate: self)
+        homePresenter.sendURLToNetwork()
+        //print(movies.count)
         
-//        let network : NetworkConnection = NetworkConnection()
-//        network.fetchMostPopular(url: "https://api.themoviedb.org/3/discover/movie?sort_by=popularity. desc&api_key=e65304c9167bce2469081f4f8948ed36")
-//        
-        Alamofire.request("https://api.themoviedb.org/3/discover/movie?sort_by=popularity. desc&api_key=e65304c9167bce2469081f4f8948ed36").responseJSON { (response) in
-           // print(response)
-            switch response.result{
-            case .success(let val) :
-                print("success")
-            case .failure(let error):
-                print(error)
-            }
-        }
         // Do any additional setup after loading the view.
     }
 
@@ -62,18 +54,28 @@ class HomeCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 4
+        return moviesList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) //as! HomeCollectionViewCell
-        //cell.imgViewID.image
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
+        //cell.imgViewID
         
-        
-        
-        // Configure the cell
-    
+        cell.img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + self.moviesList[indexPath.row].posterPath!), placeholderImage: UIImage(named: "cr1.jpg"))
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        secondVC = segue.destination as? DetailsViewController
+       // secondVC.movie = moviesList[(self.collectionView.indexPathForSelectedRow?.row)!]
+        
+        
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        secondVC!.setMovie(movie: moviesList[indexPath.row])
     }
 
     // MARK: UICollectionViewDelegate
