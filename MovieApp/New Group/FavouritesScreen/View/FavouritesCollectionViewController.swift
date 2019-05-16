@@ -12,6 +12,7 @@ private let reuseIdentifier = "favouritesCell"
 
 class FavouritesCollectionViewController: UICollectionViewController {
 
+    var detailsVC : DetailsViewController?
     var favouritesPresenter : FavouritesPresenter = FavouritesPresenter()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -72,6 +73,40 @@ class FavouritesCollectionViewController: UICollectionViewController {
     
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        detailsVC = segue.destination as? DetailsViewController
+        // secondVC.movie = moviesList[(self.collectionView.indexPathForSelectedRow?.row)!]
+        
+        
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        var currentMovie = Movie()
+        currentMovie.adult=movies[indexPath.row].value(forKey: "adult") as! Bool
+        currentMovie.backdropPath=movies[indexPath.row].value(forKey: "backdropPath")
+            as! String
+        currentMovie.id=movies[indexPath.row].value(forKey: "id") as! Int
+        currentMovie.originalLanguage=movies[indexPath.row].value(forKey: "originalLang") as! String
+        currentMovie.originalTitle=movies[indexPath.row].value(forKey: "originalTitle") as! String
+        currentMovie.overview=movies[indexPath.row].value(forKey: "overview") as! String
+        currentMovie.popularity=movies[indexPath.row].value(forKey: "popularity") as! Double
+        currentMovie.posterPath=movies[indexPath.row].value(forKey: "posterPath") as! String
+        currentMovie.releaseDate=movies[indexPath.row].value(forKey: "releaseDate") as! String
+        currentMovie.title=movies[indexPath.row].value(forKey: "title") as! String
+        currentMovie.video=movies[indexPath.row].value(forKey: "video") as! Bool
+        currentMovie.voteAverage=movies[indexPath.row].value(forKey: "voteAverage") as! Double
+        currentMovie.voteCount=movies[indexPath.row].value(forKey: "voteCount") as! Int
+        currentMovie.genre_ids=movies[indexPath.row].value(forKey: "genre") as! Array<Int>
+
+        detailsVC!.setMovie(movie: currentMovie)
+        
+    }
+    
+    
+    
 
     // MARK: UICollectionViewDelegate
 

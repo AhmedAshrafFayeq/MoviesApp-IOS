@@ -12,7 +12,7 @@ import CoreData
 class CoreDataModel : CoreDataDelegate{
     //
     var coreDataDelegate : CoreDataDelegate?
-    
+    var movies = Array<NSManagedObject>()
     
     init() {
         
@@ -56,7 +56,6 @@ class CoreDataModel : CoreDataDelegate{
     }
     func fetchFromCoreData( appDelegate : AppDelegate) -> Array<NSManagedObject> {
         //
-        var movies = Array<NSManagedObject>()
         let managerContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName:"MovieEntity")
         
@@ -66,5 +65,23 @@ class CoreDataModel : CoreDataDelegate{
             print("error")
         }
         return movies
+    }
+    
+    func deleteFromCoreData(movie : Movie , appDelegate : AppDelegate) {
+        let managerContext = appDelegate.persistentContainer.viewContext
+        for movieItem in 0..<movies.count
+        {
+            if movies[movieItem].value(forKey: "title") as! String ==  movie.title
+            {
+                managerContext.delete(movies[movieItem])
+                movies.remove(at: movieItem)
+                do{
+                    try managerContext.save()
+                }catch let error as NSError{
+                    print(error)
+                }
+            }
+        }
+        
     }
 }

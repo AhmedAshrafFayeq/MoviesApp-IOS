@@ -136,7 +136,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1T-MS-5Mz">
                                         <rect key="frame" x="56" y="477" width="112" height="39"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Add to Favourite"/>
+                                        <state key="normal" title="favourite"/>
                                         <connections>
                                             <action selector="favouriteBtn:" destination="YrO-hx-jzS" eventType="touchUpInside" id="Upz-EX-rSC"/>
                                         </connections>
@@ -192,32 +192,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uyf-81-qHf">
-                            <size key="itemSize" width="292" height="276"/>
+                            <size key="itemSize" width="200" height="235"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="favouritesCell" id="Ezu-Nl-P6H" customClass="FavouritesCollectionViewCell" customModule="MovieApp" customModuleProvider="target">
-                                <rect key="frame" x="61" y="0.0" width="292" height="276"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="235"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="292" height="276"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="235"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g2n-8D-7TV">
-                                            <rect key="frame" x="0.0" y="0.0" width="294" height="220"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="235"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XT6-vM-lNj">
-                                            <rect key="frame" x="108" y="226" width="77" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="unfavourite"/>
-                                        </button>
                                     </subviews>
                                 </view>
                                 <connections>
                                     <outlet property="img" destination="g2n-8D-7TV" id="cR1-jw-Vaw"/>
+                                    <segue destination="YrO-hx-jzS" kind="push" id="qyY-hb-XfY"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -271,4 +267,7 @@
             <point key="canvasLocation" x="994" y="530"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="qyY-hb-XfY"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -12,7 +12,9 @@ import SDWebImage
 class DetailsViewController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
+    
+    var flag : Bool = true
+    
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var voteCountTXt: UILabel!
     @IBOutlet weak var originalLangTxt: UILabel!
@@ -21,9 +23,18 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var overViewTxt: UILabel!
     @IBOutlet weak var voteAverageTxt: UILabel!
     @IBOutlet weak var titleTxt: UILabel!
+    
     @IBAction func favouriteBtn(_ sender: UIButton) {
-        
-        detailsPresenter.addToFavourite(movie: movie, appDelegate : appDelegate)
+        if flag {
+            detailsPresenter.addToFavourite(movie: movie, appDelegate : appDelegate)
+            flag = false
+            sender.setTitle("Unfavourite", for: .normal)
+        }
+        else{
+            flag = true
+            detailsPresenter.unFavourite(movie: movie, appDelegate: appDelegate)
+            sender.setTitle("favourite", for: .normal)
+        }
         
     }
     
@@ -54,7 +65,10 @@ class DetailsViewController: UIViewController {
         self.movie = movie
         
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
     /*
     // MARK: - Navigation
 

@@ -31,6 +31,12 @@ class DeatailsPresenter{
         coreDataObject.favouritesMovie(movie: movie, appDelegate: appDelegate)
         
     }
+    func unFavourite(movie : Movie ,appDelegate : AppDelegate)  {
+    //code
+    var coreDataObject : CoreDataModel = CoreDataModel()
+    coreDataObject.deleteFromCoreData(movie: movie, appDelegate: appDelegate)
+    
+    }
     
     
 }
