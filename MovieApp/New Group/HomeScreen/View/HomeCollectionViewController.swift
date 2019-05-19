@@ -18,6 +18,19 @@ class HomeCollectionViewController: UICollectionViewController {
     var secondVC : DetailsViewController?
     var homePresenter : HomePresenter = HomePresenter()
     
+    @IBAction func getChangeSortOrder(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            homePresenter.fetchMostPopular()
+            DispatchQueue.main.async {
+            }
+            
+        case 1:
+            homePresenter.fetchHighestRated()
+        default:
+            break
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +41,7 @@ class HomeCollectionViewController: UICollectionViewController {
         // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         self.homePresenter.setDelegate(delegate: self)
-        homePresenter.sendURLToNetwork()
+        homePresenter.fetchMostPopular()
         //print(movies.count)
         
         // Do any additional setup after loading the view.

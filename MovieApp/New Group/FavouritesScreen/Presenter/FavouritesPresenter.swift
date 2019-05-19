@@ -30,6 +30,10 @@ class FavouritesPresenter{
         
         favouritesDelegate?.setMovies(listOfMovies: movies)
     }
+    func unfavourite(movie : Movie , appDelegate : AppDelegate)  {
+        var coreDataObject : CoreDataModel = CoreDataModel()
+        coreDataObject.deleteFromCoreData(movie: movie, appDelegate: appDelegate)
+    }
     
     
 }

@@ -10,5 +10,8 @@ import UIKit
 
 class FavouritesCollectionViewCell: UICollectionViewCell {
 
+    @IBAction func unfavBtn(_ sender: UIButton) {
+    }
     @IBOutlet weak var img: UIImageView!
+    var movie : Movie?
 }

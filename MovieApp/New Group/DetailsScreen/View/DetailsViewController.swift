@@ -8,13 +8,19 @@
 
 import UIKit
 import SDWebImage
+import CoreData
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController , UITableViewDelegate , UITableViewDataSource  {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    var flag : Bool = true
+    var trailersList : Array<Trailer> = []
+    var reviewsList : Array<Reviews> = []
     
+    var flag : Bool?
+    
+    @IBOutlet weak var reviewsTableView: UITableView!
+    @IBOutlet weak var trailersTableView: UITableView!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var voteCountTXt: UILabel!
     @IBOutlet weak var originalLangTxt: UILabel!
@@ -23,17 +29,18 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var overViewTxt: UILabel!
     @IBOutlet weak var voteAverageTxt: UILabel!
     @IBOutlet weak var titleTxt: UILabel!
+    @IBOutlet weak var favBtn: UIButton!
     
     @IBAction func favouriteBtn(_ sender: UIButton) {
-        if flag {
+        if flag == true{
             detailsPresenter.addToFavourite(movie: movie, appDelegate : appDelegate)
-            flag = false
             sender.setTitle("Unfavourite", for: .normal)
+            flag = false
         }
         else{
-            flag = true
             detailsPresenter.unFavourite(movie: movie, appDelegate: appDelegate)
             sender.setTitle("favourite", for: .normal)
+            flag = true
         }
         
     }
@@ -58,15 +65,45 @@ class DetailsViewController: UIViewController {
         voteAverageTxt.text?.append("/10")
         self.detailsPresenter.setDelegate(delegate: self)
         //print(movie.originalTitle)
+        
+        trailersTableView.delegate = self
+        trailersTableView.dataSource = self
+        
+        reviewsTableView.delegate = self
+        reviewsTableView.dataSource = self
+        
 
+        
         // Do any additional setup after loading the view.
     }
     func setMovie(movie : Movie) {
         self.movie = movie
+        detailsPresenter.fetchTrailer(movie: movie)
         
+        
+        detailsPresenter.fetchReviews(movie: movie)
+        
+        
+        //trailersList.count
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //setMovie(movie: movie)
+        
+
+        flag = self.detailsPresenter.checkCoreDataMovies(movie: movie, appDelegate: appDelegate)
+        
+        if flag! {
+            favBtn.setTitle("favourite", for: .normal)
+        }
+        else{
+            favBtn.setTitle("unfavourite", for: .normal)
+        }
+        
+//        detailsPresenter.fetchTrailer()
+        
+        
         
     }
     /*
@@ -78,5 +115,88 @@ class DetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    //     -----------methods of table view---------------
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch tableView {
+        case trailersTableView:
 
+            return trailersList.count
+        case reviewsTableView:
+
+            return reviewsList.count
+        default:
+            break
+        }
+        return reviewsList.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : UITableViewCell = UITableViewCell()
+        
+        switch tableView {
+        case trailersTableView:
+            let trailerCell = tableView.dequeueReusableCell(withIdentifier: "trailerCell", for: indexPath) as! TrailersTableViewCell
+            
+            trailerCell.trailerLabel.text = trailersList[indexPath.row].name
+            return trailerCell
+            
+        case reviewsTableView:
+            let reviewsCell = tableView.dequeueReusableCell(withIdentifier: "reviewsCell", for: indexPath) as! ReviewsTableViewCell
+            
+            
+            reviewsCell.authorLabel.text = reviewsList[indexPath.row].author!
+            reviewsCell.contentLabel.text = reviewsList[indexPath.row].content!
+            return reviewsCell
+            
+        default:
+            break
+        }
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 70
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //detailsPresenter.openTrailer(url: trailersList[indexPath.row].key!)
+        
+        switch tableView {
+        case trailersTableView:
+            let youtubeId = trailersList[indexPath.row].key!
+            let url = URL(string:"http://www.youtube.com/watch?v=\(youtubeId)")!
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        case reviewsTableView:
+            //--------
+            
+            break
+        default:
+            break
+        }
+        
+        
+    
+        
+        //print(trailersList[indexPath.row].key!)
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        switch tableView {
+        case trailersTableView:
+            return "Trailers"
+        case reviewsTableView:
+            //--------
+            return "Reviews"
+            break
+        default:
+            break
+        }
+        return ""
+    }
 }

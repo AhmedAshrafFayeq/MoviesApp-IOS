@@ -10,4 +10,8 @@ import Foundation
 
 protocol DetailsDelegate{
     
+    func showAlert()
+    func alert(title : String , message : String)
+    func getTrailers(listOfTrailers: Array<Trailer>)
+    func getReviews(listOfReviews: Array<Reviews>)
 }

@@ -14,8 +14,10 @@ extension HomeCollectionViewController : HomeDelegate {
         print(listOfMovies.count)
 
         moviesList = listOfMovies
+        DispatchQueue.main.async {
+            self.collectionView?.reloadData()
+        }
         
-        self.collectionView?.reloadData()
         //print(self.moviesList.count)
         
         //print(movies.count)

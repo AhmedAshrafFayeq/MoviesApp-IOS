@@ -13,19 +13,93 @@ import SDWebImage
 
 class NetworkConnection{
     var movies = [Movie] ()
+    var trailers = [Trailer] ()
+    var reviews = [Reviews] ()
+    
     var arrayResult = [[String:AnyObject]]()
-    
+    var trailersArrayResult = [[String:AnyObject]]()
+    var reviewsArrayResult = [[String:AnyObject]]()
     var homePresenter : HomePresenter?
-    
+    var detailsPresenter : DeatailsPresenter?
     func setDelegate (delegate : HomePresenter){
         self.homePresenter = delegate
     }
-    
+    func setDetailsDelegate (delegate : DeatailsPresenter){
+        self.detailsPresenter = delegate
+    }
     init() {
         
 
     }
-    func fetchMostPopular(url : String)
+    
+    func fetchReviewsFromNetwork(url : String) {
+        print(url)
+        Alamofire.request(url).responseJSON { (response) in
+            if((response.result.value) != nil)
+            {
+
+                let jsonData = JSON(response.result.value!)
+                if let resultData = jsonData["results"].arrayObject
+                {
+
+                    self.reviewsArrayResult = resultData as! [[String:AnyObject]]
+                    for index in 0..<self.reviewsArrayResult.count{
+                        print(index)
+                        let arrayDictionary = self.reviewsArrayResult[index]
+                        let review = Reviews()
+                        review.author = arrayDictionary["author"] as! String
+                        review.content = arrayDictionary["content"] as! String
+                        review.id = arrayDictionary ["id"] as! String
+                        review.url = arrayDictionary["url"] as! String
+                        
+                        //print(review)
+                        self.reviews.append(review)
+                    }
+                    if self.reviews.count != 0{
+                        // self.homePresenter?.getMovieList(listOfMovies: self.movies)
+                        
+                        self.detailsPresenter?.getReviewsList(listOfReviews: self.reviews)
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    func fetchTrailersFromNetwork(url : String) {
+        Alamofire.request(url).responseJSON { (response) in
+            if((response.result.value) != nil)
+            {
+                let jsonData = JSON(response.result.value!)
+                if let resultData = jsonData["results"].arrayObject
+                {
+                    self.trailersArrayResult = resultData as! [[String:AnyObject]]
+                    for index in 0..<self.trailersArrayResult.count{
+                        let arrayDictionary = self.trailersArrayResult[index]
+                        let trailer = Trailer()
+                        trailer.id = arrayDictionary["id"] as! String
+                        trailer.iso31661 = arrayDictionary["iso_3166_1"] as! String
+                        trailer.iso6391 = arrayDictionary["iso_639_1"] as! String
+                        trailer.key = arrayDictionary["key"] as! String
+                        trailer.name = arrayDictionary["name"] as! String
+                        trailer.site = arrayDictionary["site"] as! String
+                        trailer.size = arrayDictionary["size"] as! Int
+                        trailer.type = arrayDictionary["type"] as! String
+                        
+                        //print(trailer)
+                        self.trailers.append(trailer)
+                    }
+                    if self.trailers.count != 0{
+                       // self.homePresenter?.getMovieList(listOfMovies: self.movies)
+                        self.detailsPresenter?.getTrailersList(listOfTrailes: self.trailers)
+                    }
+                }
+            }
+        }
+    }
+
+    func fetchMoviesFromNetwork(url : String)
     {
         Alamofire.request(url).responseJSON { (response) in
             if((response.result.value) != nil)

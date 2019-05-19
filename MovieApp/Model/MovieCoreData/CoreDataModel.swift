@@ -58,7 +58,7 @@ class CoreDataModel : CoreDataDelegate{
         //
         let managerContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName:"MovieEntity")
-        
+        var movies = Array<NSManagedObject>()
         do{
             movies = try managerContext.fetch(fetchRequest)
         }catch{
@@ -67,11 +67,28 @@ class CoreDataModel : CoreDataDelegate{
         return movies
     }
     
+    func fetchUponSpecificID(appDelegate : AppDelegate , Id : Int) -> Array<NSManagedObject>
+    {
+        
+        let managerContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName:"MovieEntity")
+        let myPredicate = NSPredicate(format: "id == %d", Id)
+        var moviesCheckList = Array<NSManagedObject>()
+        fetchRequest.predicate = myPredicate
+        do {
+            moviesCheckList = try managerContext.fetch(fetchRequest)
+        }catch let error as NSError{
+            print(error)
+        }
+        return moviesCheckList
+    }
+    
     func deleteFromCoreData(movie : Movie , appDelegate : AppDelegate) {
         let managerContext = appDelegate.persistentContainer.viewContext
+        movies = fetchFromCoreData(appDelegate: appDelegate)
         for movieItem in 0..<movies.count
         {
-            if movies[movieItem].value(forKey: "title") as! String ==  movie.title
+            if movies[movieItem].value(forKey: "id") as! Int ==  movie.id
             {
                 managerContext.delete(movies[movieItem])
                 movies.remove(at: movieItem)

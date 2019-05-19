@@ -22,7 +22,7 @@ class FavouritesCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         
         favouritesPresenter.setDelegate(delegate: self)
-
+        self.collectionView?.reloadData()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
