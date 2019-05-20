@@ -34,6 +34,7 @@
 		0B9200E42292FCB1008FB1ED /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9200E32292FCB1008FB1ED /* placeholder.png */; };
 		0B9200E622930D02008FB1ED /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9200E522930D02008FB1ED /* home.png */; };
 		0B9200E822930D2E008FB1ED /* favorite-heart-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9200E722930D2D008FB1ED /* favorite-heart-button.png */; };
+		0B9200EA22932B91008FB1ED /* Unknown.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9200E922932B90008FB1ED /* Unknown.png */; };
 		0BD4277A2289C02300899A06 /* FavouritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD427792289C02200899A06 /* FavouritesCollectionViewController.swift */; };
 		0BD4277C2289C02B00899A06 /* FavouritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4277B2289C02B00899A06 /* FavouritesCollectionViewCell.swift */; };
 		0BD4277E2289C04100899A06 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4277D2289C04100899A06 /* HomeCollectionViewController.swift */; };
@@ -75,6 +76,7 @@
 		0B9200E32292FCB1008FB1ED /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		0B9200E522930D02008FB1ED /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = ../../../home.png; sourceTree = "<group>"; };
 		0B9200E722930D2D008FB1ED /* favorite-heart-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorite-heart-button.png"; sourceTree = "<group>"; };
+		0B9200E922932B90008FB1ED /* Unknown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unknown.png; sourceTree = "<group>"; };
 		0BD427792289C02200899A06 /* FavouritesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesCollectionViewController.swift; sourceTree = "<group>"; };
 		0BD4277B2289C02B00899A06 /* FavouritesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BD4277D2289C04100899A06 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 		0B87672722919EB300F4FF41 /* Recourses */ = {
 			isa = PBXGroup;
 			children = (
+				0B9200E922932B90008FB1ED /* Unknown.png */,
 				0B9200E722930D2D008FB1ED /* favorite-heart-button.png */,
 				0B9200E522930D02008FB1ED /* home.png */,
 				0B9200E32292FCB1008FB1ED /* placeholder.png */,
@@ -419,6 +422,7 @@
 				0B9200E622930D02008FB1ED /* home.png in Resources */,
 				0B9200E22292E534008FB1ED /* Fall-Movie-Review.jpg in Resources */,
 				BA593C092289B432007CFF2E /* Assets.xcassets in Resources */,
+				0B9200EA22932B91008FB1ED /* Unknown.png in Resources */,
 				BA593C042289B42C007CFF2E /* Main.storyboard in Resources */,
 				0B9200E42292FCB1008FB1ED /* placeholder.png in Resources */,
 				0B9200DD2292C4BC008FB1ED /* home1.png in Resources */,
