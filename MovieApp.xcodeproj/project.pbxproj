@@ -28,6 +28,12 @@
 		0B87672922919ECD00F4FF41 /* Unknown.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B87672822919ECD00F4FF41 /* Unknown.jpeg */; };
 		0B87672B2291AE4700F4FF41 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B87672A2291AE4700F4FF41 /* ReviewsTableViewCell.swift */; };
 		0B87672D2291B0DA00F4FF41 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B87672C2291B0DA00F4FF41 /* Reviews.swift */; };
+		0B9200DD2292C4BC008FB1ED /* home1.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9200DC2292C4BC008FB1ED /* home1.png */; };
+		0B9200E02292E3F8008FB1ED /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9200DF2292E3F8008FB1ED /* SplashViewController.swift */; };
+		0B9200E22292E534008FB1ED /* Fall-Movie-Review.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0B9200E12292E534008FB1ED /* Fall-Movie-Review.jpg */; };
+		0B9200E42292FCB1008FB1ED /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9200E32292FCB1008FB1ED /* placeholder.png */; };
+		0B9200E622930D02008FB1ED /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9200E522930D02008FB1ED /* home.png */; };
+		0B9200E822930D2E008FB1ED /* favorite-heart-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B9200E722930D2D008FB1ED /* favorite-heart-button.png */; };
 		0BD4277A2289C02300899A06 /* FavouritesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD427792289C02200899A06 /* FavouritesCollectionViewController.swift */; };
 		0BD4277C2289C02B00899A06 /* FavouritesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4277B2289C02B00899A06 /* FavouritesCollectionViewCell.swift */; };
 		0BD4277E2289C04100899A06 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD4277D2289C04100899A06 /* HomeCollectionViewController.swift */; };
@@ -63,6 +69,12 @@
 		0B87672822919ECD00F4FF41 /* Unknown.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Unknown.jpeg; sourceTree = "<group>"; };
 		0B87672A2291AE4700F4FF41 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		0B87672C2291B0DA00F4FF41 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		0B9200DC2292C4BC008FB1ED /* home1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home1.png; sourceTree = "<group>"; };
+		0B9200DF2292E3F8008FB1ED /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		0B9200E12292E534008FB1ED /* Fall-Movie-Review.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Fall-Movie-Review.jpg"; sourceTree = "<group>"; };
+		0B9200E32292FCB1008FB1ED /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		0B9200E522930D02008FB1ED /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = home.png; path = ../../../home.png; sourceTree = "<group>"; };
+		0B9200E722930D2D008FB1ED /* favorite-heart-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorite-heart-button.png"; sourceTree = "<group>"; };
 		0BD427792289C02200899A06 /* FavouritesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesCollectionViewController.swift; sourceTree = "<group>"; };
 		0BD4277B2289C02B00899A06 /* FavouritesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouritesCollectionViewCell.swift; sourceTree = "<group>"; };
 		0BD4277D2289C04100899A06 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
@@ -166,10 +178,23 @@
 		0B87672722919EB300F4FF41 /* Recourses */ = {
 			isa = PBXGroup;
 			children = (
+				0B9200E722930D2D008FB1ED /* favorite-heart-button.png */,
+				0B9200E522930D02008FB1ED /* home.png */,
+				0B9200E32292FCB1008FB1ED /* placeholder.png */,
+				0B9200E12292E534008FB1ED /* Fall-Movie-Review.jpg */,
+				0B9200DC2292C4BC008FB1ED /* home1.png */,
 				0B87672822919ECD00F4FF41 /* Unknown.jpeg */,
 				0B82CD3A228B002C002B02C4 /* cr1.jpg */,
 			);
 			path = Recourses;
+			sourceTree = "<group>";
+		};
+		0B9200DE2292E3CC008FB1ED /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0B9200DF2292E3F8008FB1ED /* SplashViewController.swift */,
+			);
+			path = SplashScreen;
 			sourceTree = "<group>";
 		};
 		0BD427662289BD0300899A06 /* Model */ = {
@@ -186,6 +211,7 @@
 		0BD427702289BF9700899A06 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				0B9200DE2292E3CC008FB1ED /* SplashScreen */,
 				0B82CD3E228B2059002B02C4 /* DetailsScreen */,
 				0BD427752289BFE200899A06 /* HomeScreen */,
 				0BD427712289BFC300899A06 /* FavouritesScreen */,
@@ -259,9 +285,9 @@
 		0BD427782289BFFB00899A06 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0B82CD30228ABB13002B02C4 /* HomeViewController_ExtensionDelegate.swift */,
 				0BD4277F2289C04600899A06 /* HomeCollectionViewCell.swift */,
 				0BD4277D2289C04100899A06 /* HomeCollectionViewController.swift */,
-				0B82CD30228ABB13002B02C4 /* HomeViewController_ExtensionDelegate.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -387,10 +413,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B9200E822930D2E008FB1ED /* favorite-heart-button.png in Resources */,
 				0B82CD3B228B002C002B02C4 /* cr1.jpg in Resources */,
 				BA593C0C2289B432007CFF2E /* LaunchScreen.storyboard in Resources */,
+				0B9200E622930D02008FB1ED /* home.png in Resources */,
+				0B9200E22292E534008FB1ED /* Fall-Movie-Review.jpg in Resources */,
 				BA593C092289B432007CFF2E /* Assets.xcassets in Resources */,
 				BA593C042289B42C007CFF2E /* Main.storyboard in Resources */,
+				0B9200E42292FCB1008FB1ED /* placeholder.png in Resources */,
+				0B9200DD2292C4BC008FB1ED /* home1.png in Resources */,
 				0B87672922919ECD00F4FF41 /* Unknown.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +479,7 @@
 				0BD427802289C04600899A06 /* HomeCollectionViewCell.swift in Sources */,
 				BA593BFF2289B42C007CFF2E /* AppDelegate.swift in Sources */,
 				0B82CD31228ABB13002B02C4 /* HomeViewController_ExtensionDelegate.swift in Sources */,
+				0B9200E02292E3F8008FB1ED /* SplashViewController.swift in Sources */,
 				0B82CD39228AF6BB002B02C4 /* NetworkConnection_ExtensionDelegate.swift in Sources */,
 				0B82CD4F228B601B002B02C4 /* CoreDataDelegate.swift in Sources */,
 				0B876724229189B200F4FF41 /* Trailer.swift in Sources */,

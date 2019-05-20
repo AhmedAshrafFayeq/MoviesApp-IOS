@@ -25,7 +25,7 @@ class HomePresenter{
         let network : NetworkConnection = NetworkConnection()
         network.setDelegate(delegate: self)
         
-        network.fetchMoviesFromNetwork(url: "https://api.themoviedb.org/3/discover/movie?sort_by=highest_rated.desc&api_key=f544b7896cfc1aaa6f8f288c388ce666")
+        network.fetchMoviesFromNetwork(url: "https://api.themoviedb.org/3/discover/movie?sort_by=top_rated.desc&api_key=f544b7896cfc1aaa6f8f288c388ce666")
     }
     
     func fetchMostPopular(){

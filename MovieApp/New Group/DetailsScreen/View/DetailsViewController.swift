@@ -22,24 +22,26 @@ class DetailsViewController: UIViewController , UITableViewDelegate , UITableVie
     @IBOutlet weak var reviewsTableView: UITableView!
     @IBOutlet weak var trailersTableView: UITableView!
     @IBOutlet weak var img: UIImageView!
-    @IBOutlet weak var voteCountTXt: UILabel!
-    @IBOutlet weak var originalLangTxt: UILabel!
+//    @IBOutlet weak var voteCountTXt: UILabel!
+//    @IBOutlet weak var originalLangTxt: UILabel!
     @IBOutlet weak var releaseDateTxt: UILabel!
     @IBOutlet weak var originalTitleTxt: UILabel!
     @IBOutlet weak var overViewTxt: UILabel!
     @IBOutlet weak var voteAverageTxt: UILabel!
-    @IBOutlet weak var titleTxt: UILabel!
+   // @IBOutlet weak var titleTxt: UILabel!
     @IBOutlet weak var favBtn: UIButton!
     
     @IBAction func favouriteBtn(_ sender: UIButton) {
         if flag == true{
             detailsPresenter.addToFavourite(movie: movie, appDelegate : appDelegate)
-            sender.setTitle("Unfavourite", for: .normal)
+            sender.setTitle("🖤", for: .normal)
+            //♥️
             flag = false
         }
         else{
             detailsPresenter.unFavourite(movie: movie, appDelegate: appDelegate)
-            sender.setTitle("favourite", for: .normal)
+            sender.setTitle("♡", for: .normal)
+            
             flag = true
         }
         
@@ -52,14 +54,14 @@ class DetailsViewController: UIViewController , UITableViewDelegate , UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + movie.posterPath!), placeholderImage: UIImage(named: "cr1.jpg"))
+        img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + movie.posterPath!), placeholderImage: UIImage(named: "placeholder.png"))
         
-        voteCountTXt.text = String (movie.voteCount!)
+        //voteCountTXt.text = String (movie.voteCount!)
         //voteCountTXt.text = (movie.voteCount as! String)
         originalTitleTxt.text = movie.originalTitle
         releaseDateTxt.text = movie.releaseDate
-        originalLangTxt.text = movie.originalLanguage
-        titleTxt.text = movie.title
+       // originalLangTxt.text = movie.originalLanguage
+        //titleTxt.text = movie.title
         overViewTxt.text = movie.overview
         voteAverageTxt.text = String (movie.voteAverage!)
         voteAverageTxt.text?.append("/10")
@@ -95,10 +97,11 @@ class DetailsViewController: UIViewController , UITableViewDelegate , UITableVie
         flag = self.detailsPresenter.checkCoreDataMovies(movie: movie, appDelegate: appDelegate)
         
         if flag! {
-            favBtn.setTitle("favourite", for: .normal)
+            favBtn.setTitle("♡", for: .normal)
+        
         }
         else{
-            favBtn.setTitle("unfavourite", for: .normal)
+            favBtn.setTitle("🖤", for: .normal)
         }
         
 //        detailsPresenter.fetchTrailer()
@@ -160,9 +163,30 @@ class DetailsViewController: UIViewController , UITableViewDelegate , UITableVie
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+        switch tableView {
+        case trailersTableView:
+            
+            return 70
+            
+        case reviewsTableView:
+            
+            return heightForEachView(text: reviewsList[indexPath.row].content! , width: self.view.frame.width-10)
+            
+        default:
+            break
+        }
         return 70
     }
+    
+    func heightForEachView(text : String , width : CGFloat) -> CGFloat{
+        let label : UILabel = UILabel(frame : CGRect(origin: CGPoint(x: 0 , y:0), size: CGSize(width: width , height: CGFloat.greatestFiniteMagnitude)))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.text = text
+        label.sizeToFit()
+        return label.frame.height
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //detailsPresenter.openTrailer(url: trailersList[indexPath.row].key!)
@@ -185,18 +209,19 @@ class DetailsViewController: UIViewController , UITableViewDelegate , UITableVie
         
         //print(trailersList[indexPath.row].key!)
     }
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        switch tableView {
-        case trailersTableView:
-            return "Trailers"
-        case reviewsTableView:
-            //--------
-            return "Reviews"
-            break
-        default:
-            break
-        }
-        return ""
-    }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//
+//        switch tableView {
+//        case trailersTableView:
+//            return "Trailers"
+//        case reviewsTableView:
+//            //--------
+//            return "Reviews"
+//            break
+//        default:
+//            break
+//        }
+//        return ""
+//    }
+    
 }

@@ -117,11 +117,18 @@ class NetworkConnection{
                         movie.voteAverage = arrayDictionary["vote_average"] as! Double
                         movie.title = arrayDictionary["title"] as! String
                         movie.popularity = arrayDictionary["popularity"] as! Double
-                        movie.posterPath = arrayDictionary["poster_path"] as! String
+                        if arrayDictionary["poster_path"] as? String != nil
+                        {
+                            movie.posterPath = arrayDictionary["poster_path"] as! String
+                        }                        
                         movie.originalLanguage = arrayDictionary["original_language"] as! String
                         movie.originalTitle = arrayDictionary["original_title"] as! String
                         movie.genre_ids = arrayDictionary["genre_ids"] as! Array<Int>
-                        movie.backdropPath = arrayDictionary["backdrop_path"] as! String
+                        if arrayDictionary["backdrop_path"] as? String != nil
+                        {
+                            movie.backdropPath = arrayDictionary["backdrop_path"] as! String
+                        }
+                        
                         movie.adult = arrayDictionary["adult"] as! Bool
                         movie.overview = arrayDictionary["overview"] as! String
                         movie.releaseDate = arrayDictionary["release_date"] as! String

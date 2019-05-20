@@ -22,8 +22,6 @@ class HomeCollectionViewController: UICollectionViewController {
         switch sender.selectedSegmentIndex {
         case 0:
             homePresenter.fetchMostPopular()
-            DispatchQueue.main.async {
-            }
             
         case 1:
             homePresenter.fetchHighestRated()
@@ -40,12 +38,17 @@ class HomeCollectionViewController: UICollectionViewController {
         // Register cell classes
         // self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
+        
         self.homePresenter.setDelegate(delegate: self)
         homePresenter.fetchMostPopular()
         //print(movies.count)
         
         // Do any additional setup after loading the view.
     }
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+
 
     /*
     // MARK: - Navigation
@@ -74,7 +77,8 @@ class HomeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
         //cell.imgViewID
         
-        cell.img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185" + self.moviesList[indexPath.row].posterPath!), placeholderImage: UIImage(named: "cr1.jpg"))
+        
+        cell.img.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w185\(self.moviesList[indexPath.row].posterPath ?? "")"  ), placeholderImage: UIImage(named: "placeholder.png"))
         return cell
     }
     

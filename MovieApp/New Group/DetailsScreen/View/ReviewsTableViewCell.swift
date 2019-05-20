@@ -11,6 +11,7 @@ import UIKit
 class ReviewsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var authorLabel: UILabel!
+    
     @IBOutlet weak var contentLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
