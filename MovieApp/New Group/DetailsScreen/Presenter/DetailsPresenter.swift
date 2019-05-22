@@ -73,10 +73,9 @@ class DeatailsPresenter{
     }
     
     func getTrailersList(listOfTrailes : Array<Trailer>)  {
-        //
-        
+ 
         detailsDelegate?.getTrailers(listOfTrailers: listOfTrailes)
-        //print(listOfMovies.count)
+        
     }
     func getReviewsList(listOfReviews: Array<Reviews>)
     {

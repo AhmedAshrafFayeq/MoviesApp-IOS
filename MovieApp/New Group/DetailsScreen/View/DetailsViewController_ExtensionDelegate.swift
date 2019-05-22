@@ -42,7 +42,6 @@ extension DetailsViewController : DetailsDelegate {
 
     }
     func getReviews(listOfReviews: Array<Reviews>) {
-        //print("reviews\(listOfReviews.count)")
         reviewsList = listOfReviews
         DispatchQueue.main.async {
             self.reviewsTableView?.reloadData()

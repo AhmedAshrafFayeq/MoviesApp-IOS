@@ -11,8 +11,6 @@ import Foundation
 extension HomeCollectionViewController : HomeDelegate {
 
     func getMovies(listOfMovies: Array<Movie>) {
-        print(listOfMovies.count)
-
         moviesList = listOfMovies
         DispatchQueue.main.async {
             self.collectionView?.reloadData()

@@ -106,8 +106,6 @@ class DetailsViewController: UIViewController , UITableViewDelegate , UITableVie
         
 //        detailsPresenter.fetchTrailer()
         
-        
-        
     }
     /*
     // MARK: - Navigation
@@ -147,6 +145,10 @@ class DetailsViewController: UIViewController , UITableViewDelegate , UITableVie
             let trailerCell = tableView.dequeueReusableCell(withIdentifier: "trailerCell", for: indexPath) as! TrailersTableViewCell
             
             trailerCell.trailerLabel.text = trailersList[indexPath.row].name
+            
+            trailerCell.img.sd_setImage(with: URL(string: "http://img.youtube.com/vi/\(trailersList[indexPath.row].key!)/maxresdefault.jpg"  ), placeholderImage: UIImage(named: "Unknown.jpeg"))
+            
+            
             return trailerCell
             
         case reviewsTableView:
