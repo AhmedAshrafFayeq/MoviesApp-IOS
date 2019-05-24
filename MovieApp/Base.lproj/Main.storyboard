@@ -182,10 +182,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHO-2m-S9p">
-                                                <rect key="frame" x="32" y="511" width="345" height="106"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="106" id="Z5M-iY-sNZ"/>
-                                                </constraints>
+                                                <rect key="frame" x="32" y="519" width="345" height="98"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -283,8 +280,11 @@
                                                 </prototypes>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0A7-Hi-Uec">
-                                                <rect key="frame" x="32" y="469" width="345" height="23"/>
+                                                <rect key="frame" x="32" y="469" width="345" height="31"/>
                                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="31" id="D96-g8-WCN"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="highlightedColor" red="1" green="0.17433176989999999" blue="0.1874588817" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -316,6 +316,7 @@
                                                 <rect key="frame" x="32" y="1047" width="345" height="31"/>
                                                 <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="5Rw-3e-jYh"/>
                                                     <constraint firstAttribute="height" constant="31" id="ciA-GJ-DvZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
