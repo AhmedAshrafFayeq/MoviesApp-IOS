@@ -85,7 +85,7 @@ class CoreDataModel : CoreDataDelegate{
     
     func deleteFromCoreData(movie : Movie , appDelegate : AppDelegate) {
         let managerContext = appDelegate.persistentContainer.viewContext
-        movies = fetchFromCoreData(appDelegate: appDelegate)
+        movies = fetchUponSpecificID(appDelegate: appDelegate,Id: movie.id!)
         for movieItem in 0..<movies.count
         {
             if movies[movieItem].value(forKey: "id") as! Int ==  movie.id
